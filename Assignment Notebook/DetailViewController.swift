@@ -9,32 +9,34 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
-
-
-    func configureView() {
-        // Update the user interface for the detail item.
-        if let detail = detailItem {
-            if let label = detailDescriptionLabel {
-                label.text = detail.description
-            }
-        }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        configureView()
-    }
-
-    var detailItem: NSDate? {
+    @IBOutlet weak var periodTextField: UITextField!
+    @IBOutlet weak var assignmentTextField: UITextField!
+    @IBOutlet weak var dueDateTextField: UITextField!
+    var detailItem: Assignment? {
         didSet {
-            // Update the view.
             configureView()
         }
     }
+    func configureView() {
+        if let assignment = self.detailItem {
+            if periodTextField != nil {
+                periodTextField.text = Assignment.period
+                assignmentTextField.text = Assignment.assignmentName
+                dueDateTextField.text = Assignment.dueDate
+                }
+            }
+        }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureView()
+    }
 
-
+    override func viewWillDisappear(_ animated: Bool) {
+        if let assignment = self.detailItem {
+            assignment.period = periodTextField.text!
+            assignment.assignmentName = assignmentTextField.text!
+            assignment.dueDate = dueDateTextField.text!
+        }
+    }
 }
-

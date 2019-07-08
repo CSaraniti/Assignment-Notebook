@@ -75,6 +75,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Assignment" id="mOI-FS-AaM"/>
+                    <connections>
+                        <outlet property="assignmentTextField" destination="VMl-Gi-MU4" id="pEQ-fl-Hdz"/>
+                        <outlet property="dueDateTextField" destination="6n2-Mw-G6d" id="kZi-E7-qGg"/>
+                        <outlet property="periodTextField" destination="95T-vp-HDN" id="rfy-6K-j4G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
